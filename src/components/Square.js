@@ -26,9 +26,9 @@ const SquareSurface = styled.div`
         color: var(--white);
     }
 `;
-function Square({ val, handleClick, row, col }) {
+function Square({ val, handleClick, idx }) {
     return (
-        <SquareWrapper isEmpty={val === '.' ? true : false} onClick={() => handleClick(row, col)}>
+        <SquareWrapper isEmpty={val === '.' ? true : false} onClick={() => handleClick(idx)}>
             <SquareSurface isEmpty={val === '.' ? true : false}>
                 <span>{val !== '.' && val}</span>
             </SquareSurface>
