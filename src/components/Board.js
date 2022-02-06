@@ -33,7 +33,13 @@ function Board({ state, emptyState, solved, handleClick }) {
                     if (emptyState.includes(idx))
                         return (
                             <SquareContainer idx={idx}>
-                                <Square val={val} idx={idx} handleClick={handleClick} isAnswer={true} />
+                                <Square
+                                    className="press"
+                                    val={val}
+                                    idx={idx}
+                                    handleClick={handleClick}
+                                    isAnswer={true}
+                                />
                             </SquareContainer>
                         );
                     return (
