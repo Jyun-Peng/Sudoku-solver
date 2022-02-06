@@ -13,3 +13,17 @@
     --gray-dark: #666666;
     --white: #efefef;
 }
+
+.press {
+    animation: square-flip 0.3s ease-out 0s 1 none;
+}
+
+@keyframes square-flip {
+    0% {
+        transform: translateY(4%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
