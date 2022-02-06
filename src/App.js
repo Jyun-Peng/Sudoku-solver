@@ -14,15 +14,23 @@ const StyledWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 2rem;
+    padding: 3rem 0;
 `;
 const BoardContainer = styled.div`
     margin-bottom: 2rem;
 `;
-
 const ButtonGroup = styled.div`
+    width: min(25.4rem, 90vw);
     display: flex;
     gap: 1rem;
+`;
+const StyledTitle = styled.h1`
+    margin: 0 0 2rem 0;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 0.15rem;
+    color: var(--red);
+    text-align: center;
 `;
 
 const defaultBoard = [
@@ -119,21 +127,14 @@ function App() {
         boardState.forEach((v, idx) => {
             if (v === '.') emptyList.push(idx);
         });
-        console.log(emptyList);
         setEmptyState(emptyList);
     };
-
-    const handleBoardClick = function (idx) {
+    const handleBoardClick = function (val, idx) {
+        console.log(val);
         const currState = boardState.slice(0);
-        let currValue = currState[idx];
-        if (currValue === '.') currValue = '1';
-        else if (currValue === '9') currValue = '.';
-        else currValue = (parseInt(currValue, 10) + 1).toString(10);
-
-        currState[idx] = currValue;
+        currState[idx] = val === 0 ? '.' : val.toString(10);
         setBoardState(currState);
     };
-
     const handleSolve = function () {
         const board = transformer.to2dArray(boardState, 9);
         // console.log(board);
@@ -144,7 +145,6 @@ function App() {
             setSolvedState(true);
         } else window.alert('No solution!');
     };
-
     const handleReset = function () {
         setBoardState(defaultBoard);
         setSolvedState(false);
@@ -153,6 +153,7 @@ function App() {
     return (
         <div className="App">
             <StyledWrapper>
+                <StyledTitle>Sudoku Solver</StyledTitle>
                 <BoardContainer>
                     <Board
                         state={boardState}
