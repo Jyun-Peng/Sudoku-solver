@@ -4,7 +4,13 @@ const SquareWrapper = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 0.25rem;
-    background-color: var(${(props) => (props.isEmpty ? '--gray-dark' : '--red')});
+    background-color: var(
+        ${(props) => {
+            if (props.isEmpty) return '--gray-dark';
+            else if (props.isAnswer) return '--green-dark';
+            else return '--cyan-dark';
+        }}
+    );
 
     user-select: none;
     cursor: pointer;
@@ -12,9 +18,15 @@ const SquareWrapper = styled.div`
 `;
 const SquareSurface = styled.div`
     width: 100%;
-    height: 85%;
-    border-radius: 0.25rem;
-    background-color: var(${(props) => (props.isEmpty ? '--gray-light' : '--cyan')});
+    height: 80%;
+    border-radius: 0 0 0.25rem 0.25rem;
+    background-color: var(
+        ${(props) => {
+            if (props.isEmpty) return '--gray-light';
+            else if (props.isAnswer) return '--green';
+            else return '--cyan';
+        }}
+    );
 
     & > span {
         position: absolute;
@@ -26,10 +38,10 @@ const SquareSurface = styled.div`
         color: var(--white);
     }
 `;
-function Square({ val, handleClick, idx }) {
+function Square({ val, handleClick, idx, isAnswer = false }) {
     return (
-        <SquareWrapper isEmpty={val === '.' ? true : false} onClick={() => handleClick(idx)}>
-            <SquareSurface isEmpty={val === '.' ? true : false}>
+        <SquareWrapper isEmpty={val === '.' ? true : false} onClick={() => handleClick(idx)} isAnswer={isAnswer}>
+            <SquareSurface isEmpty={val === '.' ? true : false} isAnswer={isAnswer}>
                 <span>{val !== '.' && val}</span>
             </SquareSurface>
         </SquareWrapper>
