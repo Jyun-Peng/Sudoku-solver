@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
 const SquareWrapper = styled.div`
@@ -19,12 +20,12 @@ const SquareWrapper = styled.div`
     &:hover {
         transition: transform 0.2s;
         filter: brightness(1.1);
-        transform: translateY(-5%);
+        transform: translateY(-3%);
     }
     &:active {
         transition: none;
         filter: brightness(1);
-        transform: translateY(0);
+        transform: translateY(4%);
     }
 `;
 const SquareSurface = styled.div`
@@ -49,15 +50,20 @@ const SquareSurface = styled.div`
         color: var(--white);
     }
 `;
-function Square({ val, handleClick, idx, isAnswer = false }) {
+function Square({ className, val, handleClick, idx, isAnswer = false }) {
+    const handleMouseUp = function () {
+        let currVal = val === '.' ? 0 : parseInt(val, 10);
+        currVal = (currVal + 1) % 10;
+
+        handleClick(currVal, idx);
+    };
+
     return (
         <SquareWrapper
+            className={className}
             isEmpty={val === '.' ? true : false}
-            onClick={() => handleClick(idx)}
+            onMouseUp={() => handleMouseUp()}
             isAnswer={isAnswer}
-            onMouseDown={() => {
-                console.log('press');
-            }}
         >
             <SquareSurface isEmpty={val === '.' ? true : false} isAnswer={isAnswer}>
                 <span>{val !== '.' && val}</span>

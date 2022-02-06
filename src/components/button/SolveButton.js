@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import StyledButtonWrapper from './StyledButtonWrapper';
 
 const ButtonWrapper = styled(StyledButtonWrapper)`
-    width: min(20rem, 80vw);
+    flex: 1 1 auto;
     background-color: var(${(props) => (props.disable ? '--gray-dark' : '--red')});
     pointer-events: ${(props) => (props.disable ? 'none' : 'auto')};
 `;

@@ -8,11 +8,11 @@ const StyledButtonWrapper = styled.div`
 
     &:hover {
         transition: transform 0.2s;
-        transform: translateY(-5%);
+        transform: translateY(-4%);
     }
     &:active {
         transition: none;
-        transform: translateY(0);
+        transform: translateY(5%);
     }
 `;
 
