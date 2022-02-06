@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import styled from 'styled-components';
 import Board from './components/Board';
@@ -111,6 +111,17 @@ const defaultBoard = [
 
 function App() {
     const [boardState, setBoardState] = useState(defaultBoard);
+    const [emptyState, setEmptyState] = useState([]);
+    const [solvedState, setSolvedState] = useState(false);
+
+    const storeEmptyState = function () {
+        const emptyList = [];
+        boardState.forEach((v, idx) => {
+            if (v === '.') emptyList.push(idx);
+        });
+        console.log(emptyList);
+        setEmptyState(emptyList);
+    };
 
     const handleBoardClick = function (idx) {
         const currState = boardState.slice(0);
@@ -125,24 +136,33 @@ function App() {
 
     const handleSolve = function () {
         const board = transformer.to2dArray(boardState, 9);
-        console.log(board);
+        // console.log(board);
         const state = solveSudoku(board);
-        if (state) setBoardState(transformer.to1dArray(board));
-        else console.log("Can't solve!");
+        if (state) {
+            storeEmptyState();
+            setBoardState(transformer.to1dArray(board));
+            setSolvedState(true);
+        } else window.alert('No solution!');
     };
 
     const handleReset = function () {
         setBoardState(defaultBoard);
+        setSolvedState(false);
     };
 
     return (
         <div className="App">
             <StyledWrapper>
                 <BoardContainer>
-                    <Board state={boardState} handleClick={handleBoardClick} />
+                    <Board
+                        state={boardState}
+                        emptyState={emptyState}
+                        solved={solvedState}
+                        handleClick={handleBoardClick}
+                    />
                 </BoardContainer>
                 <ButtonGroup>
-                    <SolveButton handleClick={handleSolve} />
+                    <SolveButton handleClick={handleSolve} disable={solvedState} />
                     <ResetButton handleClick={handleReset} />
                 </ButtonGroup>
             </StyledWrapper>
