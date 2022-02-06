@@ -1,20 +1,21 @@
 import styled from 'styled-components';
-import { FiRefreshCcw } from 'react-icons/fi';
+import iconReset from '../../icons/reset.svg';
 
 const ButtonWrapper = styled.div`
     width: 4.4rem;
+    aspect-ratio: 1/1;
     padding-bottom: 0.8rem;
-    background-color: var(--gray-dark);
+    background-color: var(--blue-dark);
     border-radius: 1rem;
 
     user-select: none;
     cursor: pointer;
 `;
 const ButtonSurface = styled.div`
-    padding: 1rem 0;
-    background-color: var(--gray-light);
+    height: 100%;
+    padding: 0.75rem 0;
+    background-color: var(--blue);
     border-radius: inherit;
-    font-size: 1.5rem;
     font-weight: 600;
     color: var(--white);
     text-align: center;
@@ -23,7 +24,7 @@ function ResetButton({ handleClick }) {
     return (
         <ButtonWrapper onClick={handleClick}>
             <ButtonSurface>
-                <FiRefreshCcw />
+                <img src={iconReset} alt="R" style={{ height: '2rem' }} />
             </ButtonSurface>
         </ButtonWrapper>
     );
