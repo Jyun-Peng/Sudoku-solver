@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 import iconReset from '../../icons/reset.svg';
+import StyledButtonWrapper from './StyledButtonWrapper';
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled(StyledButtonWrapper)`
     width: 4.4rem;
     aspect-ratio: 1/1;
-    padding-bottom: 0.8rem;
     background-color: var(--blue-dark);
-    border-radius: 1rem;
-
-    user-select: none;
-    cursor: pointer;
 `;
 const ButtonSurface = styled.div`
     height: 100%;

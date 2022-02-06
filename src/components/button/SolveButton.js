@@ -1,14 +1,10 @@
 import styled from 'styled-components';
+import StyledButtonWrapper from './StyledButtonWrapper';
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled(StyledButtonWrapper)`
     width: min(20rem, 80vw);
-    padding-bottom: 0.8rem;
     background-color: var(${(props) => (props.disable ? '--gray-dark' : '--red')});
-    border-radius: 1rem;
-
     pointer-events: ${(props) => (props.disable ? 'none' : 'auto')};
-    user-select: none;
-    cursor: pointer;
 `;
 const ButtonSurface = styled.div`
     padding: 1rem 0;

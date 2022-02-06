@@ -15,6 +15,17 @@ const SquareWrapper = styled.div`
     user-select: none;
     cursor: pointer;
     overflow: hidden;
+
+    &:hover {
+        transition: transform 0.2s;
+        filter: brightness(1.1);
+        transform: translateY(-5%);
+    }
+    &:active {
+        transition: none;
+        filter: brightness(1);
+        transform: translateY(0);
+    }
 `;
 const SquareSurface = styled.div`
     width: 100%;
@@ -40,7 +51,14 @@ const SquareSurface = styled.div`
 `;
 function Square({ val, handleClick, idx, isAnswer = false }) {
     return (
-        <SquareWrapper isEmpty={val === '.' ? true : false} onClick={() => handleClick(idx)} isAnswer={isAnswer}>
+        <SquareWrapper
+            isEmpty={val === '.' ? true : false}
+            onClick={() => handleClick(idx)}
+            isAnswer={isAnswer}
+            onMouseDown={() => {
+                console.log('press');
+            }}
+        >
             <SquareSurface isEmpty={val === '.' ? true : false} isAnswer={isAnswer}>
                 <span>{val !== '.' && val}</span>
             </SquareSurface>
