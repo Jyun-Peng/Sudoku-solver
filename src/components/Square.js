@@ -16,12 +16,15 @@ const SquareWrapper = styled.div`
     user-select: none;
     cursor: pointer;
     overflow: hidden;
+    transition: transform 0.2s;
 
-    &:hover {
-        transition: transform 0.2s;
-        filter: brightness(1.1);
-        transform: translateY(-3%);
+    @media (hover: hover) {
+        &:hover {
+            filter: brightness(1.1);
+            transform: translateY(-3%);
+        }
     }
+
     &:active {
         transition: none;
         filter: brightness(1);
