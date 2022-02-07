@@ -28,7 +28,7 @@ const SquareWrapper = styled.div`
     &:active {
         transition: none;
         filter: brightness(1);
-        transform: translateY(4%);
+        transform: translateY(5%);
     }
 `;
 const SquareSurface = styled.div`

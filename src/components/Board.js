@@ -25,7 +25,7 @@ function Board({ state, emptyState, solved, handleClick }) {
             {state.map((val, idx) => {
                 if (!solved) {
                     return (
-                        <SquareContainer idx={idx}>
+                        <SquareContainer idx={idx} className="start">
                             <Square val={val} idx={idx} handleClick={handleClick} />
                         </SquareContainer>
                     );
