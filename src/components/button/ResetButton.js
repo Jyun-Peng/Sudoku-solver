@@ -8,7 +8,7 @@ const ButtonWrapper = styled(StyledButtonWrapper)`
     background-color: var(--blue-dark);
 `;
 const ButtonSurface = styled.div`
-    height: 100%;
+    height: 3.5rem;
     padding: 0.75rem 0;
     background-color: var(--blue);
     border-radius: inherit;
